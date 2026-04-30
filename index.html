@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voronoi Diagram</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #0e0e14;
+            color: #e0e0e0;
+            font-family: "Segoe UI", system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px 16px;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #888;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        #webgpu-canvas {
+            width: 800px;
+            height: 600px;
+            border-radius: 8px;
+            cursor: crosshair;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            background: #1e1e2e;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        button:hover:not(:disabled) {
+            background: #2a2a3e;
+            border-color: #888;
+        }
+
+        button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .seed-info {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        #no-webgpu {
+            display: none;
+            background: #3b0000;
+            border: 1px solid #a00;
+            color: #ffcccc;
+            padding: 16px 24px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .how-it-works {
+            background: #13131f;
+            border: 1px solid #2a2a3e;
+            border-radius: 8px;
+            padding: 16px 22px;
+            max-width: 800px;
+            font-size: 0.82rem;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        .how-it-works strong {
+            color: #ddd;
+        }
+
+        .pass {
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Voronoi in Motion</h1>
+    <canvas id="webgpu-canvas" width="800" height="600"></canvas>
+
+    <div class="controls">
+        <button id="scatter-btn">Scatter Seeds</button>
+        <button id="start-motion-btn">Start Motion</button>
+        <button id="stop-motion-btn" disabled>Stop Motion</button>
+        <button id="reset-btn">Reset</button>
+        <span class="seed-info">Seeds: <span id="seed-count">0 / 64</span></span>
+    </div>
+
+</body>
+
+</html>
